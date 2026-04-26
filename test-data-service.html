@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Service Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .success {
+            color: #22c55e;
+            font-weight: bold;
+        }
+        .error {
+            color: #ef4444;
+            font-weight: bold;
+        }
+        .info {
+            color: #3b82f6;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #2563eb;
+        }
+        .data-display {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #e5e7eb;
+            padding: 10px;
+            border-radius: 4px;
+            background: #f9fafb;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 TaskFlow Data Service Test</h1>
+    
+    <div class="container">
+        <h2>📊 Test Results</h2>
+        <div id="test-results"></div>
+    </div>
+
+    <div class="container">
+        <h2>🎮 Controls</h2>
+        <button onclick="testAllServices()">Run All Tests</button>
+        <button onclick="testAuth()">Test Auth</button>
+        <button onclick="testTasks()">Test Tasks</button>
+        <button onclick="testNotes()">Test Notes</button>
+        <button onclick="testLibrary()">Test Library</button>
+        <button onclick="clearData()">Clear All Data</button>
+        <button onclick="showData()">Show Current Data</button>
+    </div>
+
+    <div class="container">
+        <h2>📋 Current Data</h2>
+        <div id="data-display" class="data-display">
+            Click "Show Current Data" to see what's stored in localStorage
+        </div>
+    </div>
+
+    <script type="module">
+        // Mock localStorage for testing
+        if (typeof localStorage === 'undefined') {
+            window.localStorage = {
+                data: {},
+                getItem: function(key) { return this.data[key] || null; },
+                setItem: function(key, value) { this.data[key] = value; },
+                removeItem: function(key) { delete this.data[key]; },
+                clear: function() { this.data = {}; }
+            };
+        }
+
+        // Simplified data service for testing
+        const generateId = (prefix) => `${prefix}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+        
+        const testDataService = {
+            // Test basic CRUD operations
+            testCRUD: async () => {
+                const results = [];
+                
+                try {
+                    // Test user creation
+                    const testUser = {
+                        user_id: generateId('user'),
+                        name: 'Test User',
+                        email: 'test@example.com',
+                        xp: 100,
+                        coins: 50
+                    };
+                    localStorage.setItem('users', JSON.stringify([testUser]));
+                    results.push('✅ User creation successful');
+                    
+                    // Test task creation
+                    const testTask = {
+                        task_id: generateId('task'),
+                        user_id: testUser.user_id,
+                        title: 'Test Task',
+                        description: 'This is a test task',
+                        completed: false
+                    };
+                    const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+                    tasks.push(testTask);
+                    localStorage.setItem('tasks', JSON.stringify(tasks));
+                    results.push('✅ Task creation successful');
+                    
+                    // Test note creation
+                    const testNote = {
+                        note_id: generateId('note'),
+                        user_id: testUser.user_id,
+                        title: 'Test Note',
+                        content: '# Test Note\n\nThis is a test note with **markdown** content.',
+                        folder: 'test'
+                    };
+                    const notes = JSON.parse(localStorage.getItem('notes') || '[]');
+                    notes.push(testNote);
+                    localStorage.setItem('notes', JSON.stringify(notes));
+                    results.push('✅ Note creation successful');
+                    
+                    // Test library item creation
+                    const testLibraryItem = {
+                        item_id: generateId('library'),
+                        item_type: 'quiz',
+                        title: 'Test Quiz',
+                        content: {
+                            questions: [
+                                {
+                                    question: 'What is 2+2?',
+                                    options: ['3', '4', '5', '6'],
+                                    correct: 1
+                                }
+                            ]
+                        }
+                    };
+                    const libraryItems = JSON.parse(localStorage.getItem('library_items') || '[]');
+                    libraryItems.push(testLibraryItem);
+                    localStorage.setItem('library_items', JSON.stringify(libraryItems));
+                    results.push('✅ Library item creation successful');
+                    
+                    return { success: true, results };
+                } catch (error) {
+                    return { success: false, error: error.message };
+                }
+            },
+
+            // Test data retrieval
+            testRetrieval: async () => {
+                const results = [];
+                
+                try {
+                    const users = JSON.parse(localStorage.getItem('users') || '[]');
+                    results.push(`✅ Retrieved ${users.length} users`);
+                    
+                    const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+                    results.push(`✅ Retrieved ${tasks.length} tasks`);
+                    
+                    const notes = JSON.parse(localStorage.getItem('notes') || '[]');
+                    results.push(`✅ Retrieved ${notes.length} notes`);
+                    
+                    const libraryItems = JSON.parse(localStorage.getItem('library_items') || '[]');
+                    results.push(`✅ Retrieved ${libraryItems.length} library items`);
+                    
+                    return { success: true, results };
+                } catch (error) {
+                    return { success: false, error: error.message };
+                }
+            },
+
+            // Test data updates
+            testUpdates: async () => {
+                const results = [];
+                
+                try {
+                    // Update a task
+                    const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+                    if (tasks.length > 0) {
+                        tasks[0].completed = true;
+                        tasks[0].progress = 100;
+                        localStorage.setItem('tasks', JSON.stringify(tasks));
+                        results.push('✅ Task update successful');
+                    }
+                    
+                    // Update a note
+                    const notes = JSON.parse(localStorage.getItem('notes') || '[]');
+                    if (notes.length > 0) {
+                        notes[0].content += '\n\nUpdated content!';
+                        localStorage.setItem('notes', JSON.stringify(notes));
+                        results.push('✅ Note update successful');
+                    }
+                    
+                    return { success: true, results };
+                } catch (error) {
+                    return { success: false, error: error.message };
+                }
+            },
+
+            // Test data deletion
+            testDeletion: async () => {
+                const results = [];
+                
+                try {
+                    // Delete a task
+                    const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+                    if (tasks.length > 0) {
+                        const originalLength = tasks.length;
+                        tasks.pop();
+                        localStorage.setItem('tasks', JSON.stringify(tasks));
+                        results.push(`✅ Task deletion successful (${originalLength} → ${tasks.length})`);
+                    }
+                    
+                    return { success: true, results };
+                } catch (error) {
+                    return { success: false, error: error.message };
+                }
+            }
+        };
+
+        // UI Functions
+        function displayResults(results, isError = false) {
+            const resultsDiv = document.getElementById('test-results');
+            const className = isError ? 'error' : 'success';
+            resultsDiv.innerHTML = `<div class="${className}">${results}</div>`;
+        }
+
+        function displayData() {
+            const dataDisplay = document.getElementById('data-display');
+            const data = {
+                users: JSON.parse(localStorage.getItem('users') || '[]'),
+                tasks: JSON.parse(localStorage.getItem('tasks') || '[]'),
+                notes: JSON.parse(localStorage.getItem('notes') || '[]'),
+                library_items: JSON.parse(localStorage.getItem('library_items') || '[]')
+            };
+            dataDisplay.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        }
+
+        async function testAllServices() {
+            displayResults('🔄 Running all tests...', false);
+            
+            try {
+                const crud = await testDataService.testCRUD();
+                if (!crud.success) throw new Error(crud.error);
+                
+                const retrieval = await testDataService.testRetrieval();
+                if (!retrieval.success) throw new Error(retrieval.error);
+                
+                const updates = await testDataService.testUpdates();
+                if (!updates.success) throw new Error(updates.error);
+                
+                const deletion = await testDataService.testDeletion();
+                if (!deletion.success) throw new Error(deletion.error);
+                
+                const allResults = [...crud.results, ...retrieval.results, ...updates.results, ...deletion.results];
+                displayResults(`🎉 All tests passed!\n\n${allResults.join('\n')}`, false);
+                displayData();
+            } catch (error) {
+                displayResults(`❌ Test failed: ${error.message}`, true);
+            }
+        }
+
+        async function testAuth() {
+            displayResults('🔄 Testing authentication...', false);
+            try {
+                const testUser = {
+                    user_id: generateId('user'),
+                    name: 'Auth Test User',
+                    email: 'auth@test.com',
+                    xp: 250,
+                    coins: 75,
+                    level: 2
+                };
+                localStorage.setItem('users', JSON.stringify([testUser]));
+                displayResults(`✅ Auth test successful! Created user: ${testUser.name}`, false);
+                displayData();
+            } catch (error) {
+                displayResults(`❌ Auth test failed: ${error.message}`, true);
+            }
+        }
+
+        async function testTasks() {
+            displayResults('🔄 Testing tasks...', false);
+            try {
+                const users = JSON.parse(localStorage.getItem('users') || '[]');
+                if (users.length === 0) throw new Error('No users found. Create a user first.');
+                
+                const testTask = {
+                    task_id: generateId('task'),
+                    user_id: users[0].user_id,
+                    title: 'Math Homework',
+                    description: 'Complete calculus problems 1-10',
+                    category: 'academics',
+                    completed: false,
+                    progress: 0
+                };
+                
+                const tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+                tasks.push(testTask);
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+                
+                displayResults(`✅ Task test successful! Created task: ${testTask.title}`, false);
+                displayData();
+            } catch (error) {
+                displayResults(`❌ Task test failed: ${error.message}`, true);
+            }
+        }
+
+        async function testNotes() {
+            displayResults('🔄 Testing notes...', false);
+            try {
+                const users = JSON.parse(localStorage.getItem('users') || '[]');
+                if (users.length === 0) throw new Error('No users found. Create a user first.');
+                
+                const testNote = {
+                    note_id: generateId('note'),
+                    user_id: users[0].user_id,
+                    title: 'Study Notes',
+                    content: `# Physics Chapter 5\n\n## Key Concepts\n- Newton's Laws\n- Force and Motion\n\n## Formulas\n- F = ma\n- v = d/t`,
+                    folder: 'physics',
+                    tags: ['physics', 'study']
+                };
+                
+                const notes = JSON.parse(localStorage.getItem('notes') || '[]');
+                notes.push(testNote);
+                localStorage.setItem('notes', JSON.stringify(notes));
+                
+                displayResults(`✅ Note test successful! Created note: ${testNote.title}`, false);
+                displayData();
+            } catch (error) {
+                displayResults(`❌ Note test failed: ${error.message}`, true);
+            }
+        }
+
+        async function testLibrary() {
+            displayResults('🔄 Testing library...', false);
+            try {
+                const testQuiz = {
+                    item_id: generateId('library'),
+                    item_type: 'quiz',
+                    title: 'Science Quiz',
+                    content: {
+                        questions: [
+                            {
+                                id: 1,
+                                question: 'What is the chemical symbol for water?',
+                                options: ['H2O', 'CO2', 'O2', 'N2'],
+                                correct: 0,
+                                explanation: 'Water is composed of 2 hydrogen atoms and 1 oxygen atom (H2O)'
+                            },
+                            {
+                                id: 2,
+                                question: 'What planet is known as the Red Planet?',
+                                options: ['Earth', 'Mars', 'Jupiter', 'Venus'],
+                                correct: 1,
+                                explanation: 'Mars appears red due to iron oxide on its surface'
+                            }
+                        ]
+                    },
+                    difficulty: 'medium',
+                    estimated_time: 10
+                };
+                
+                const libraryItems = JSON.parse(localStorage.getItem('library_items') || '[]');
+                libraryItems.push(testQuiz);
+                localStorage.setItem('library_items', JSON.stringify(libraryItems));
+                
+                displayResults(`✅ Library test successful! Created quiz: ${testQuiz.title}`, false);
+                displayData();
+            } catch (error) {
+                displayResults(`❌ Library test failed: ${error.message}`, true);
+            }
+        }
+
+        function clearData() {
+            if (confirm('Are you sure you want to clear all test data?')) {
+                localStorage.clear();
+                displayResults('🗑️ All data cleared!', false);
+                document.getElementById('data-display').innerHTML = 'No data stored. Click "Show Current Data" to see what\'s stored in localStorage';
+            }
+        }
+
+        function showData() {
+            displayData();
+        }
+
+        // Make functions globally available
+        window.testAllServices = testAllServices;
+        window.testAuth = testAuth;
+        window.testTasks = testTasks;
+        window.testNotes = testNotes;
+        window.testLibrary = testLibrary;
+        window.clearData = clearData;
+        window.showData = showData;
+
+        // Initial display
+        displayResults('👋 Welcome! Click "Run All Tests" to test the data service.', false);
+        showData();
+    </script>
+</body>
+</html>

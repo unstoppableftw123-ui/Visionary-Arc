@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="100" viewBox="0 0 160 100">
+  <rect width="160" height="100" fill="#FFFFFF" rx="4"/>
+  <!-- Title bar -->
+  <rect x="0" y="0" width="160" height="14" fill="#EEF2FF" rx="4"/>
+  <rect x="0" y="8" width="160" height="6" fill="#EEF2FF"/>
+  <text x="80" y="10" font-family="Inter, sans-serif" font-size="6" fill="#4F46E5" text-anchor="middle" font-weight="600">Cornell Notes</text>
+  <!-- Main outline -->
+  <rect x="8" y="18" width="144" height="62" fill="none" stroke="#4F46E5" stroke-width="1.5" rx="2"/>
+  <!-- Cue column -->
+  <rect x="8" y="18" width="42" height="62" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.5" rx="2"/>
+  <!-- Summary section -->
+  <rect x="8" y="63" width="144" height="17" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.5" rx="2"/>
+  <!-- Cue label -->
+  <text x="29" y="27" font-family="Inter, sans-serif" font-size="5.5" fill="#4F46E5" text-anchor="middle" font-weight="600">CUES</text>
+  <line x1="13" y1="30" x2="45" y2="30" stroke="#C7D2FE" stroke-width="0.75"/>
+  <!-- Cue lines -->
+  <line x1="13" y1="37" x2="45" y2="37" stroke="#C7D2FE" stroke-width="0.75"/>
+  <line x1="13" y1="44" x2="45" y2="44" stroke="#C7D2FE" stroke-width="0.75"/>
+  <line x1="13" y1="51" x2="45" y2="51" stroke="#C7D2FE" stroke-width="0.75"/>
+  <line x1="13" y1="58" x2="45" y2="58" stroke="#C7D2FE" stroke-width="0.75"/>
+  <!-- Notes label -->
+  <text x="96" y="27" font-family="Inter, sans-serif" font-size="5.5" fill="#4F46E5" text-anchor="middle" font-weight="600">NOTES</text>
+  <line x1="55" y1="30" x2="147" y2="30" stroke="#C7D2FE" stroke-width="0.75"/>
+  <!-- Note lines -->
+  <line x1="55" y1="37" x2="147" y2="37" stroke="#E5E7EB" stroke-width="0.75"/>
+  <line x1="55" y1="44" x2="147" y2="44" stroke="#E5E7EB" stroke-width="0.75"/>
+  <line x1="55" y1="51" x2="147" y2="51" stroke="#E5E7EB" stroke-width="0.75"/>
+  <line x1="55" y1="58" x2="147" y2="58" stroke="#E5E7EB" stroke-width="0.75"/>
+  <!-- Summary label -->
+  <text x="80" y="73" font-family="Inter, sans-serif" font-size="5.5" fill="#4F46E5" text-anchor="middle" font-weight="600">SUMMARY</text>
+</svg>

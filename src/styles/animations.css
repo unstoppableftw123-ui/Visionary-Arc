@@ -1,0 +1,14 @@
+:root {
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 0.2s;
+  --duration-normal: 0.4s;
+  --duration-slow: 0.8s;
+  --color-orange: #FF7A3D;
+  --color-deep: #C4581A;
+  --color-brown: #8B4513;
+  --color-pastel: #F0C9A0;
+  --color-cream: #FFE8D6;
+  --color-muted: #D4A58A;
+  --color-off: #C9B8AD;
+}

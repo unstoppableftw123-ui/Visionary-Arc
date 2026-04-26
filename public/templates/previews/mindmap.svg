@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="100" viewBox="0 0 160 100">
+  <rect width="160" height="100" fill="#FFFFFF" rx="4"/>
+  <!-- Connecting lines -->
+  <line x1="58" y1="44" x2="42" y2="30" stroke="#A78BFA" stroke-width="1.25"/>
+  <line x1="102" y1="44" x2="118" y2="30" stroke="#A78BFA" stroke-width="1.25"/>
+  <line x1="58" y1="56" x2="42" y2="70" stroke="#A78BFA" stroke-width="1.25"/>
+  <line x1="102" y1="56" x2="118" y2="70" stroke="#A78BFA" stroke-width="1.25"/>
+  <!-- Center node -->
+  <ellipse cx="80" cy="50" rx="22" ry="14" fill="#F3E8FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="80" y="47" font-family="Inter, sans-serif" font-size="5.5" fill="#7C3AED" text-anchor="middle" font-weight="600">Main</text>
+  <text x="80" y="55" font-family="Inter, sans-serif" font-size="5.5" fill="#7C3AED" text-anchor="middle" font-weight="600">Idea</text>
+  <!-- Top-left branch -->
+  <ellipse cx="27" cy="22" rx="18" ry="11" fill="#D1FAE5" stroke="#10B981" stroke-width="1.5"/>
+  <text x="27" y="25" font-family="Inter, sans-serif" font-size="5" fill="#059669" text-anchor="middle" font-weight="500">Topic 1</text>
+  <!-- Top-right branch -->
+  <ellipse cx="133" cy="22" rx="18" ry="11" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="133" y="25" font-family="Inter, sans-serif" font-size="5" fill="#D97706" text-anchor="middle" font-weight="500">Topic 2</text>
+  <!-- Bottom-left branch -->
+  <ellipse cx="27" cy="78" rx="18" ry="11" fill="#FEE2E2" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="27" y="81" font-family="Inter, sans-serif" font-size="5" fill="#DC2626" text-anchor="middle" font-weight="500">Topic 3</text>
+  <!-- Bottom-right branch -->
+  <ellipse cx="133" cy="78" rx="18" ry="11" fill="#DBEAFE" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="133" y="81" font-family="Inter, sans-serif" font-size="5" fill="#2563EB" text-anchor="middle" font-weight="500">Topic 4</text>
+</svg>

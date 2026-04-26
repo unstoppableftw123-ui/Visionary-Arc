@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="100" viewBox="0 0 160 100">
+  <rect width="160" height="100" fill="#FFFFFF" stroke="#E9E9E7" stroke-width="1.5" rx="4"/>
+  <!-- Ruled lines -->
+  <line x1="16" y1="28" x2="144" y2="28" stroke="#F1F1EF" stroke-width="1"/>
+  <line x1="16" y1="40" x2="144" y2="40" stroke="#F1F1EF" stroke-width="1"/>
+  <line x1="16" y1="52" x2="144" y2="52" stroke="#F1F1EF" stroke-width="1"/>
+  <line x1="16" y1="64" x2="144" y2="64" stroke="#F1F1EF" stroke-width="1"/>
+  <line x1="16" y1="76" x2="144" y2="76" stroke="#F1F1EF" stroke-width="1"/>
+  <!-- Pencil icon hint -->
+  <rect x="68" y="36" width="24" height="28" rx="3" fill="#F7F6F3" stroke="#E3E2E0" stroke-width="1"/>
+  <line x1="80" y1="44" x2="80" y2="56" stroke="#787774" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="74" y1="50" x2="86" y2="50" stroke="#787774" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="80" y="90" font-family="Inter, sans-serif" font-size="7" fill="#787774" text-anchor="middle">Blank Canvas</text>
+</svg>

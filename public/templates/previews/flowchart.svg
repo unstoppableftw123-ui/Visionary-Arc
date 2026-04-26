@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="100" viewBox="0 0 160 100">
+  <defs>
+    <marker id="arrowhead" markerWidth="5" markerHeight="4" refX="5" refY="2" orient="auto">
+      <polygon points="0 0, 5 2, 0 4" fill="#9CA3AF"/>
+    </marker>
+  </defs>
+  <rect width="160" height="100" fill="#FFFFFF" rx="4"/>
+  <!-- Start (rounded rect) -->
+  <rect x="60" y="6" width="40" height="14" rx="7" fill="#D1FAE5" stroke="#059669" stroke-width="1.5"/>
+  <text x="80" y="16" font-family="Inter, sans-serif" font-size="6" fill="#059669" text-anchor="middle" font-weight="600">START</text>
+  <!-- Arrow 1 -->
+  <line x1="80" y1="20" x2="80" y2="28" stroke="#9CA3AF" stroke-width="1" marker-end="url(#arrowhead)"/>
+  <!-- Process 1 -->
+  <rect x="55" y="28" width="50" height="14" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.5" rx="2"/>
+  <text x="80" y="38" font-family="Inter, sans-serif" font-size="6" fill="#2563EB" text-anchor="middle">Process 1</text>
+  <!-- Arrow 2 -->
+  <line x1="80" y1="42" x2="80" y2="50" stroke="#9CA3AF" stroke-width="1" marker-end="url(#arrowhead)"/>
+  <!-- Decision diamond -->
+  <polygon points="80,50 100,62 80,74 60,62" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="80" y="65" font-family="Inter, sans-serif" font-size="6" fill="#DC2626" text-anchor="middle" font-weight="600">?</text>
+  <!-- Yes branch -->
+  <line x1="60" y1="62" x2="34" y2="75" stroke="#9CA3AF" stroke-width="1" marker-end="url(#arrowhead)"/>
+  <text x="46" y="65" font-family="Inter, sans-serif" font-size="5" fill="#059669">Yes</text>
+  <rect x="14" y="75" width="40" height="14" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.5" rx="2"/>
+  <text x="34" y="85" font-family="Inter, sans-serif" font-size="5.5" fill="#2563EB" text-anchor="middle">Process 2</text>
+  <!-- No branch -->
+  <line x1="100" y1="62" x2="126" y2="75" stroke="#9CA3AF" stroke-width="1" marker-end="url(#arrowhead)"/>
+  <text x="114" y="65" font-family="Inter, sans-serif" font-size="5" fill="#DC2626">No</text>
+  <rect x="106" y="75" width="40" height="14" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.5" rx="2"/>
+  <text x="126" y="85" font-family="Inter, sans-serif" font-size="5.5" fill="#2563EB" text-anchor="middle">Process 3</text>
+</svg>

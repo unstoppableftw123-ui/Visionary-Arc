@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="100" viewBox="0 0 160 100">
+  <defs>
+    <marker id="tl-arrow" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto">
+      <polygon points="0 0, 6 2.5, 0 5" fill="#7C3AED"/>
+    </marker>
+  </defs>
+  <rect width="160" height="100" fill="#FFFFFF" rx="4"/>
+  <!-- Main timeline line -->
+  <line x1="12" y1="50" x2="148" y2="50" stroke="#7C3AED" stroke-width="2" marker-end="url(#tl-arrow)"/>
+  <!-- Event dots -->
+  <circle cx="33" cy="50" r="4.5" fill="#7C3AED"/>
+  <circle cx="73" cy="50" r="4.5" fill="#7C3AED"/>
+  <circle cx="113" cy="50" r="4.5" fill="#7C3AED"/>
+  <!-- Event 1 - above -->
+  <line x1="33" y1="45" x2="33" y2="38" stroke="#10B981" stroke-width="1"/>
+  <rect x="14" y="20" width="38" height="18" fill="#D1FAE5" stroke="#10B981" stroke-width="1.5" rx="2"/>
+  <text x="33" y="30" font-family="Inter, sans-serif" font-size="5.5" fill="#059669" text-anchor="middle" font-weight="600">Event 1</text>
+  <text x="33" y="35" font-family="Inter, sans-serif" font-size="4.5" fill="#787774" text-anchor="middle">Jan 2024</text>
+  <!-- Event 2 - below -->
+  <line x1="73" y1="55" x2="73" y2="62" stroke="#F59E0B" stroke-width="1"/>
+  <rect x="54" y="62" width="38" height="18" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5" rx="2"/>
+  <text x="73" y="72" font-family="Inter, sans-serif" font-size="5.5" fill="#D97706" text-anchor="middle" font-weight="600">Event 2</text>
+  <text x="73" y="77" font-family="Inter, sans-serif" font-size="4.5" fill="#787774" text-anchor="middle">Jun 2024</text>
+  <!-- Event 3 - above -->
+  <line x1="113" y1="45" x2="113" y2="38" stroke="#EF4444" stroke-width="1"/>
+  <rect x="94" y="20" width="38" height="18" fill="#FEE2E2" stroke="#EF4444" stroke-width="1.5" rx="2"/>
+  <text x="113" y="30" font-family="Inter, sans-serif" font-size="5.5" fill="#DC2626" text-anchor="middle" font-weight="600">Event 3</text>
+  <text x="113" y="35" font-family="Inter, sans-serif" font-size="4.5" fill="#787774" text-anchor="middle">Dec 2024</text>
+</svg>

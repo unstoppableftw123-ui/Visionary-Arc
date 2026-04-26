@@ -1,0 +1,629 @@
+@import './styles/design-system.css';
+
+:root {
+  --va-orange: #FF7A3D;
+  --va-deep:   #C4581A;
+  --va-brown:  #8B4513;
+  --va-pastel: #F0C9A0;
+  --va-cream:  #FFE8D6;
+  --va-muted:  #D4A58A;
+  --va-off:    #C9B8AD;
+  --va-bg:     #150A06;
+  --va-surface:#1F0E08;
+  --va-card:   #2A1208;
+  --va-border: #3D1F0D;
+  --va-text:   #FFE8D6;
+  --va-text-muted: #8B6A5A;
+}
+
+body {
+  background-color: var(--va-bg) !important;
+  color: var(--va-text) !important;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        /* ── VA Brand Dark Warm Palette ── */
+        --background: 16 55% 5%;        /* #150A06 */
+        --foreground: 27 100% 92%;      /* #FFE8D6 */
+        --card: 18 68% 10%;             /* #2A1208 */
+        --card-foreground: 27 100% 92%; /* #FFE8D6 */
+        --popover: 16 60% 8%;           /* #1F0E08 */
+        --popover-foreground: 27 100% 92%;
+        --primary: 19 100% 62%;         /* #FF7A3D */
+        --primary-foreground: 16 55% 5%;/* #150A06 */
+        --secondary: 16 60% 8%;         /* #1F0E08 */
+        --secondary-foreground: 27 100% 92%;
+        --muted: 16 60% 8%;             /* #1F0E08 */
+        --muted-foreground: 20 21% 45%; /* #8B6A5A */
+        --accent: 23 65% 14%;           /* #3D1F0D */
+        --accent-foreground: 27 100% 92%;
+        --destructive: 0 72% 63%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 23 65% 14%;           /* #3D1F0D */
+        --input: 23 65% 14%;            /* #3D1F0D */
+        --ring: 19 100% 62%;            /* #FF7A3D */
+        --radius: 0.5rem;
+        /* Radius tokens */
+        --radius-sm: 8px;
+        --radius-md: 14px;
+        --radius-lg: 18px;
+        --radius-xl: 24px;
+        --radius-full: 9999px;
+        /* Shadow tokens — warm-tinted */
+        --shadow-rest: 0 1px 3px rgba(21, 10, 6, 0.5);
+        --shadow-hover: 0 8px 24px rgba(21, 10, 6, 0.7);
+        --shadow-glow: 0 0 20px rgba(255, 122, 61, 0.15);
+        --shadow-accent-glow: 0 0 20px rgba(255, 122, 61, 0.35);
+
+        /* Chart colors */
+        --chart-1: 19 100% 62%;
+        --chart-2: 32 77% 79%;
+        --chart-3: 20 42% 69%;
+        --chart-4: 43 74% 66%;
+        --chart-5: 27 87% 67%;
+
+        /* Custom semantic colors */
+        --success: 142 71% 45%;
+        --warning: 38 92% 50%;
+        --info: 217 91% 60%;
+    }
+
+    [data-theme-mode="light"] {
+        --shadow-rest: 0 1px 3px rgba(0, 0, 0, 0.06);
+        --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.08);
+        --shadow-glow: 0 0 20px rgba(0, 0, 0, 0.05);
+        --shadow-accent-glow: 0 0 20px hsl(var(--primary) / 0.25);
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        background-color: var(--bg-base);
+        color: var(--text-primary);
+        font-family: var(--font-body);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-display);
+    }
+
+    code, pre {
+        font-family: var(--font-mono);
+    }
+}
+
+@layer utilities {
+    .glass {
+        background-color: color-mix(in srgb, var(--va-card) 75%, transparent);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--va-border);
+    }
+    
+    .shadow-soft {
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    
+    .shadow-medium {
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    
+    .animate-fade-in {
+        animation: fadeIn 0.3s ease-out;
+    }
+    
+    .animate-slide-up {
+        animation: slideUp 0.3s ease-out;
+    }
+    
+    .animate-scale-in {
+        animation: scaleIn 0.2s ease-out;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Ensure dark warm background wins on all containers */
+html, body, #root {
+  background-color: var(--va-bg) !important;
+  color: var(--va-text) !important;
+  min-height: 100vh;
+}
+
+/* Scrollbar styling — uses design-system.css vars (defined there) */
+
+/* Discord-style chat background for community */
+.discord-bg {
+    @apply bg-[#313338];
+}
+
+/* Tag styles */
+.tag-red {
+    @apply bg-[#FFD4D4] text-[#4D0000] dark:bg-[#4D0000] dark:text-[#FFD4D4];
+}
+
+.tag-blue {
+    @apply bg-[#D4E4FF] text-[#00234D] dark:bg-[#00234D] dark:text-[#D4E4FF];
+}
+
+.tag-green {
+    @apply bg-[#D4FFD4] text-[#004D00] dark:bg-[#004D00] dark:text-[#D4FFD4];
+}
+
+.tag-yellow {
+    @apply bg-[#FFFBD4] text-[#4D4600] dark:bg-[#4D4600] dark:text-[#FFFBD4];
+}
+
+.tag-purple {
+    @apply bg-[#EAD4FF] text-[#2A004D] dark:bg-[#2A004D] dark:text-[#EAD4FF];
+}
+
+/* Fix for debug wrapper */
+[data-debug-wrapper="true"] {
+    display: contents !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GLOBAL HOVER & TRANSITION RULES
+═══════════════════════════════════════════════════════════════ */
+
+button:not(:disabled),
+a,
+input,
+textarea,
+[role="button"] {
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+                box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    button:not(:disabled),
+    a,
+    input,
+    textarea,
+    [role="button"],
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Card hover: lift + shadow (add class .hover-lift-card to cards) */
+.hover-lift-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Primary button hover + active */
+button[class*="bg-primary"]:not(:disabled):hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-accent-glow);
+}
+button[class*="bg-primary"]:not(:disabled):active {
+    transform: scale(0.98);
+}
+
+/* Nav item hover (sidebar-style) */
+nav a:hover,
+[data-nav-item]:hover {
+    transform: translateX(2px);
+    background: hsl(var(--secondary));
+}
+
+/* Game mode card (Competitions) */
+.hover-lift-game-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+    border-color: hsl(var(--primary) / 0.5);
+}
+
+/* Profile card: no lift, surface-2 only */
+.hover-profile-card:hover {
+    background: hsl(var(--secondary));
+}
+
+/* Theme / font picker cards */
+.hover-lift-theme-card:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--shadow-glow);
+}
+
+/* Flashcard hover */
+.hover-lift-flashcard:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+.dark .hover-lift-flashcard:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* Answer tile hover */
+.hover-lift-answer:hover {
+    transform: scale(1.02);
+    filter: brightness(1.05);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MICRO-INTERACTION OVERRIDES
+   These target Radix primitives and shared UI elements.
+   Component-level styles live in the respective *.jsx files.
+═══════════════════════════════════════════════════════════════ */
+
+/* ── 1. DIALOG — backdrop blur + spring open animation ─────── */
+[data-radix-dialog-overlay] {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+/* Override tailwindcss-animate timing on the dialog panel itself */
+[data-radix-dialog-content][data-state="open"] {
+    animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation-duration: 0.3s;
+}
+[data-radix-dialog-content][data-state="closed"] {
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    animation-duration: 0.18s;
+}
+
+/* ── 2. SHEET (drawer) — same blur treatment ────────────────── */
+[data-radix-dialog-overlay][data-state="open"] {
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    animation-duration: 0.25s;
+}
+
+/* ── 3. DROPDOWN / POPOVER / SELECT — snappy expand ─────────── */
+[data-radix-popper-content-wrapper] > *[data-state="open"] {
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-duration: 0.18s;
+}
+[data-radix-popper-content-wrapper] > *[data-state="closed"] {
+    animation-timing-function: cubic-bezier(0.36, 0.07, 0.19, 0.97);
+    animation-duration: 0.14s;
+}
+
+/* Dropdown item hover — subtle background slide */
+[role="menuitem"],
+[role="option"],
+[role="menuitemcheckbox"],
+[role="menuitemradio"] {
+    transition: background-color 0.1s ease, color 0.1s ease;
+}
+
+/* ── 4. CHECKMARK — spring pop on appear ────────────────────── */
+/* Radix wraps the indicator in a span with data-state="checked" */
+[data-state="checked"] > [data-radix-collection-item] > svg,
+[data-radix-collection-item][data-state="checked"] > span > svg,
+[data-state="checked"] > span > svg {
+    animation: check-pop 0.18s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* ── 5. SELECT item indicator ───────────────────────────────── */
+[data-radix-select-item-indicator] > svg {
+    animation: check-pop 0.18s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* ── 6. TABS — sliding underline indicator ──────────────────── */
+/* Applied to every tab trigger; underline draws in from center */
+[role="tablist"] [role="tab"] {
+    position: relative;
+    /* Override the Tailwind duration to use spring timing */
+    transition: color 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+                background-color 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.2s ease !important;
+}
+
+[role="tablist"] [role="tab"]::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 15%;
+    right: 15%;
+    height: 2px;
+    background: hsl(var(--foreground));
+    border-radius: 9999px;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity  0.2s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+
+[role="tablist"] [role="tab"][data-state="active"]::after {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+/* ── 7. INPUT / TEXTAREA focus glow ─────────────────────────── */
+/*  Extra ring shadow that Tailwind alone can't express cleanly  */
+input:focus-visible,
+textarea:focus-visible {
+    box-shadow: 0 0 0 3px hsl(var(--ring) / 0.15);
+}
+
+input[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+    border-color: hsl(var(--destructive));
+    box-shadow: 0 0 0 3px hsl(var(--destructive) / 0.12);
+}
+
+/* ── 8. ICON-BUTTON (size=icon) — rotate + bounce ───────────── */
+/* Apply .btn-icon to any icon-only interactive element         */
+.btn-icon > svg,
+.btn-icon [data-icon] {
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.btn-icon:not(:disabled):hover > svg,
+.btn-icon:not(:disabled):hover [data-icon] {
+    transform: scale(1.15) rotate(8deg);
+}
+.btn-icon:not(:disabled):active > svg,
+.btn-icon:not(:disabled):active [data-icon] {
+    animation: icon-bounce 0.28s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ── 9. TOAST container positioning ─────────────────────────── */
+/* Sonner injects its own styles, but we can nudge the gap      */
+[data-sonner-toaster] {
+    --offset: 1rem;
+}
+
+/* ── 10. FIELD shake utility ─────────────────────────────────── */
+/* Add class "field-shake" via JS when a form is submitted invalid */
+.field-shake {
+    animation: shake 0.38s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TEXT EFFECT KEYFRAMES
+═══════════════════════════════════════════════════════════════ */
+
+/* Gradient text — background-position sweep */
+@keyframes gradient-shift {
+    0%   { background-position: 0%   50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0%   50%; }
+}
+
+/* Glitch — main element jitter (x/y) */
+@keyframes glitch-jitter {
+    0%   { transform: translate(0, 0);      }
+    15%  { transform: translate(-3px,  1px); }
+    30%  { transform: translate( 3px, -2px); }
+    45%  { transform: translate(-2px,  2px); }
+    60%  { transform: translate( 2px, -1px); }
+    75%  { transform: translate(-1px,  3px); }
+    90%  { transform: translate( 1px, -2px); }
+    100% { transform: translate(0, 0);      }
+}
+
+/* Glitch — red channel (::before), clip-path slices */
+@keyframes glitch-red {
+    0%   { clip-path: inset(0% 0 92% 0); transform: translate(-3px, 0);  }
+    20%  { clip-path: inset(30% 0 55% 0); transform: translate( 3px, 1px); }
+    40%  { clip-path: inset(65% 0 18% 0); transform: translate(-3px,-1px); }
+    60%  { clip-path: inset(10% 0 75% 0); transform: translate( 2px, 2px); }
+    80%  { clip-path: inset(80% 0  5% 0); transform: translate(-2px, 0);   }
+    100% { clip-path: inset(50% 0 35% 0); transform: translate( 3px,-1px); }
+}
+
+/* Glitch — blue channel (::after), different clip bands */
+@keyframes glitch-blue {
+    0%   { clip-path: inset(55% 0 30% 0); transform: translate( 3px, 0);   }
+    20%  { clip-path: inset( 5% 0 80% 0); transform: translate(-2px,-1px); }
+    40%  { clip-path: inset(40% 0 45% 0); transform: translate( 3px, 1px); }
+    60%  { clip-path: inset(72% 0 15% 0); transform: translate(-3px, 2px); }
+    80%  { clip-path: inset(18% 0 68% 0); transform: translate( 1px,-2px); }
+    100% { clip-path: inset(85% 0  0% 0); transform: translate(-2px, 0);   }
+}
+
+/* Typewriter cursor blink */
+@keyframes cursor-blink {
+    0%,  49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+/* Highlight word — draws in left → right via scaleX */
+@keyframes highlight-reveal {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+}
+
+/* Study Hub — pulse dot, stream reveal, card flip */
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(124, 109, 240, 0.4); }
+    50% { opacity: 0.85; box-shadow: 0 0 0 6px rgba(124, 109, 240, 0); }
+}
+@keyframes stream-reveal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes card-flip {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(180deg); }
+}
+@keyframes bounce-dot {
+    0%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-6px); }
+}
+
+/* Study Hub — scoped design tokens (theme-aware) */
+.study-hub {
+    --bg: #f5f5f5;
+    --surface-2: #ebebeb;
+    --hub-bg: #f9f9f9;
+    --hub-surface: #ffffff;
+    --hub-elevated: #efefef;
+    --hub-border: rgba(0, 0, 0, 0.08);
+    --hub-accent: #DC5F14;
+    --hub-accent-glow: rgba(220, 95, 20, 0.3);
+    --hub-text: #1a1a1a;
+    --hub-muted: #666666;
+    --hub-dimmed: #aaaaaa;
+    --hub-success: #16a34a;
+    --hub-error: #dc2626;
+}
+
+.dark .study-hub {
+    --bg: #090909;
+    --surface-2: #1a1a1a;
+    --hub-bg: #0a0a0a;
+    --hub-surface: #111111;
+    --hub-elevated: #1a1a1a;
+    --hub-border: rgba(255, 255, 255, 0.08);
+    --hub-accent: #DC5F14;
+    --hub-accent-glow: rgba(220, 95, 20, 0.3);
+    --hub-text: #f0f0f0;
+    --hub-muted: #888888;
+    --hub-dimmed: #444444;
+    --hub-success: #34d399;
+    --hub-error: #f87171;
+}
+
+/* Sidebar collapsed mode — hide labels, center icons */
+.sidebar.collapsed .label {
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    overflow: hidden;
+}
+.sidebar.collapsed nav > div > a,
+.sidebar.collapsed nav a[href] {
+    justify-content: center;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+.sidebar.collapsed .sub-nav {
+    display: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TEXT EFFECT CLASSES
+═══════════════════════════════════════════════════════════════ */
+
+/* ── Animated gradient text ── */
+.gradient-text {
+    background: linear-gradient(
+        135deg,
+        #7c3aed 0%,
+        #4f46e5 25%,
+        #0ea5e9 50%,
+        #6d28d9 75%,
+        #7c3aed 100%
+    );
+    background-size: 250% 250%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 5s ease infinite;
+}
+
+/* ── Glitch text (hover-only, RGB split via clip-path) ── */
+.glitch-text {
+    position: relative;
+    display: inline-block;
+    cursor: default;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    /* Inherit all visual properties so the copy looks identical */
+    font: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    white-space: inherit;
+}
+
+/* Red channel */
+.glitch-text::before { color: #ef4444; }
+/* Blue channel */
+.glitch-text::after  { color: #3b82f6; }
+
+.glitch-text:hover {
+    animation: glitch-jitter 0.2s steps(7, end) forwards;
+}
+.glitch-text:hover::before {
+    opacity: 0.72;
+    animation: glitch-red 0.2s steps(5, end) forwards;
+}
+.glitch-text:hover::after {
+    opacity: 0.72;
+    animation: glitch-blue 0.2s steps(5, end) forwards;
+}
+
+/* ── Highlight-reveal word ── */
+.highlight-word {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.08em;
+}
+
+.highlight-word::after {
+    content: '';
+    position: absolute;
+    left: -0.06em;
+    right: -0.06em;
+    bottom: 0.04em;
+    height: 0.42em;
+    background: #fbbf24; /* amber-400 */
+    opacity: 0.38;
+    border-radius: 3px;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left center;
+    pointer-events: none;
+}
+.dark .highlight-word::after {
+    background: #f59e0b; /* amber-500 — slightly more vivid in dark */
+    opacity: 0.45;
+}
+
+.highlight-word.revealed::after {
+    animation: highlight-reveal 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    /* honour optional JS-supplied stagger delay; fallback to 100 ms */
+    animation-delay: var(--highlight-delay, 100ms);
+    animation-fill-mode: both;
+}
